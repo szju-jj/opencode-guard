@@ -4,6 +4,14 @@
   "description": "Deterministic credential guardrail for OpenCode agents. Blocks credential reads and exfiltration at the tool boundary, and keeps a tamper-evident audit trail.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szju-jj/opencode-guard.git"
+  },
+  "homepage": "https://github.com/szju-jj/opencode-guard#readme",
+  "bugs": {
+    "url": "https://github.com/szju-jj/opencode-guard/issues"
+  },
   "exports": {
     ".": "./src/index.ts"
   },

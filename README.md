@@ -1,5 +1,8 @@
 # opencode-guard
 
+[![ci](https://github.com/szju-jj/opencode-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/szju-jj/opencode-guard/actions/workflows/ci.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 A deterministic credential guardrail for [OpenCode](https://opencode.ai) agents.
 
 It does not scan your repo. It watches what the agent is about to **do** — read a
