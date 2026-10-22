@@ -1,0 +1,26 @@
+# Solo developer. Blocks credential reads, still allows the APIs you actually use.
+version: 1
+mode: enforce
+audit: .opencode/guard-audit.jsonl
+
+allow_paths:
+  - "**/.env.example"
+  - "**/.env.sample"
+  - "**/.env.template"
+
+extra_deny_paths:
+  - "**/*.pem"
+
+egress_allow:
+  - "api.openai.com"
+  - "api.anthropic.com"
+  - "github.com"
+  - "registry.npmjs.org"
+
+rules:
+  read_credential: deny
+  credential_egress: deny
+  write_credential: deny
+  deny_path: deny
+  dangerous_flag: deny
+  destructive: ask

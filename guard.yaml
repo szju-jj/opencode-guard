@@ -1,0 +1,35 @@
+version: 1
+
+# learn   = observe only, nothing is blocked (run this for the first week)
+# enforce = block per the rules below
+mode: enforce
+
+audit: .opencode/guard-audit.jsonl
+
+# Paths that only hold templates, never live credentials.
+allow_paths:
+  - "**/.env.example"
+  - "**/.env.sample"
+  - "**/.env.template"
+
+# Extra paths you never want an agent to touch, on top of the built-in list.
+extra_deny_paths:
+  - "**/secrets/**"
+  - "**/*.pem"
+
+# Destinations that count as trusted for secret env vars.
+egress_allow:
+  - "api.openai.com"
+  - "api.anthropic.com"
+  - "github.com"
+  - "registry.npmjs.org"
+
+mask_env: "false"
+
+rules:
+  read_credential: deny
+  credential_egress: deny
+  write_credential: deny
+  deny_path: deny
+  dangerous_flag: deny
+  destructive: ask

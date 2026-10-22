@@ -1,0 +1,47 @@
+{
+  "name": "opencode-guard",
+  "version": "0.1.0",
+  "description": "Deterministic credential guardrail for OpenCode agents. Blocks credential reads and exfiltration at the tool boundary, and keeps a tamper-evident audit trail.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "bin": {
+    "opencode-guard": "./bin/guard.ts"
+  },
+  "files": [
+    "src",
+    "bin",
+    "examples",
+    "guard.yaml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node --test test/guard.test.ts",
+    "demo": "node demo/demo.ts",
+    "verify:once": "node demo/verify-once.ts",
+    "report": "node bin/guard.ts report",
+    "verify": "node bin/guard.ts verify"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "agent",
+    "security",
+    "secrets",
+    "guardrail",
+    "credentials"
+  ],
+  "peerDependencies": {
+    "@opencode/plugin": "*"
+  },
+  "peerDependenciesMeta": {
+    "@opencode/plugin": {
+      "optional": true
+    }
+  }
+}

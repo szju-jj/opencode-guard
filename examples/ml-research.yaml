@@ -1,0 +1,27 @@
+# Research / ML box. The risk here is not a web app, it is a GPU box that holds
+# a Hugging Face token, a W&B key and a dataset mount. Nothing leaves except
+# the two hubs the training scripts legitimately push artifacts to.
+version: 1
+mode: enforce
+audit: .opencode/guard-audit.jsonl
+
+allow_paths:
+  - "**/.env.example"
+  - "**/configs/*.yaml"
+
+extra_deny_paths:
+  - "**/.cache/huggingface/token"
+  - "**/wandb/**"
+  - "/data/**"
+
+egress_allow:
+  - "huggingface.co"
+  - "api.wandb.ai"
+
+rules:
+  read_credential: deny
+  credential_egress: deny
+  write_credential: deny
+  deny_path: deny
+  dangerous_flag: deny
+  destructive: deny

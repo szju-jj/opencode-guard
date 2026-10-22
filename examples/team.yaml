@@ -1,0 +1,26 @@
+# Shared repo. Nothing is approvable without a written trail, so ask is used
+# sparingly and deny is the default for anything credential-shaped.
+version: 1
+mode: enforce
+audit: .opencode/guard-audit.jsonl
+
+allow_paths:
+  - "**/.env.example"
+  - "**/fixtures/**"
+
+extra_deny_paths:
+  - "**/secrets/**"
+  - "**/.kube/**"
+  - "**/terraform.tfstate*"
+
+egress_allow:
+  - "api.openai.com"
+  - "github.com"
+
+rules:
+  read_credential: deny
+  credential_egress: deny
+  write_credential: deny
+  deny_path: deny
+  dangerous_flag: deny
+  destructive: deny

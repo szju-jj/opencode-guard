@@ -1,0 +1,24 @@
+# Freelance work. Several client repos on one machine, each with its own
+# credentials. The failure mode you cannot afford is client A's keys reaching
+# client B's build, so egress is empty and every credential file is denied.
+version: 1
+mode: enforce
+audit: .opencode/guard-audit.jsonl
+
+allow_paths:
+  - "**/.env.example"
+
+extra_deny_paths:
+  - "**/clients/**/.env*"
+  - "**/.vercel/**"
+  - "**/.netlify/**"
+
+egress_allow: []
+
+rules:
+  read_credential: deny
+  credential_egress: deny
+  write_credential: deny
+  deny_path: deny
+  dangerous_flag: deny
+  destructive: deny

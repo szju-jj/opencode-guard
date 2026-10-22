@@ -1,0 +1,7 @@
+node_modules/
+.opencode/*.jsonl
+.opencode/guard.approvals.json
+*.log
+.DS_Store
+login-github.bat
+*.local.bat

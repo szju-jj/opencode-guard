@@ -1,0 +1,23 @@
+# Unattended runs: CI, cron, background agents. No human is watching, so there
+# is no approvable state and no outbound allowlist at all.
+version: 1
+mode: enforce
+audit: .opencode/guard-audit.jsonl
+
+allow_paths:
+  - "**/.env.example"
+
+extra_deny_paths:
+  - "**/.aws/**"
+  - "**/.ssh/**"
+  - "**/.docker/**"
+
+egress_allow: []
+
+rules:
+  read_credential: deny
+  credential_egress: deny
+  write_credential: deny
+  deny_path: deny
+  dangerous_flag: deny
+  destructive: deny

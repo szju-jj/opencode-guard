@@ -1,0 +1,25 @@
+# Monorepo. Many packages, one shared credential set. Reads are blocked
+# everywhere, egress is limited to the two registries the build actually needs.
+version: 1
+mode: enforce
+audit: .opencode/guard-audit.jsonl
+
+allow_paths:
+  - "**/.env.example"
+  - "**/packages/*/fixtures/**"
+
+extra_deny_paths:
+  - "**/secrets/**"
+  - "**/.env.production"
+
+egress_allow:
+  - "registry.npmjs.org"
+  - "github.com"
+
+rules:
+  read_credential: deny
+  credential_egress: deny
+  write_credential: deny
+  deny_path: deny
+  dangerous_flag: deny
+  destructive: ask
